@@ -1,11 +1,15 @@
-﻿<Window x:Class="WishList.MainWindow"
+﻿<Window x:Class="WishListApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WishList"
+        xmlns:local="clr-namespace:WishListApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <local:IsEnabledConverter x:Key="isEnabledConverter"/>
+        <local:SelectedToVisibilityConverter x:Key="selectedToVisibilityConverter"/>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -16,7 +20,7 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ListBox Name="wishLists" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Margin="5">
+        <ListBox Name="wishLists" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Margin="5" MinWidth="80">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -29,10 +33,22 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ListBox Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Name="wishListTextBox"  Margin="5" ItemsSource="{Binding ElementName=wishLists, Path=SelectedValue.ListItems}"/>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="2">
-            <Button Click="Button_Click_Add" Content="Lägg till" Grid.Column="1" Grid.Row="2" Width="auto" Height="auto" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,5,5"/>
+        <ListBox Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Name="wishListTextBox"  Margin="5" ItemsSource="{Binding ElementName=wishLists, Path=SelectedValue.ListItems}" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="2">
+            <Button Click="Button_Click_Add" Content="Ny lista" Grid.Column="1" Grid.Row="2" Width="auto" Height="auto" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,5,5"/>
             <Button Click="Button_Click_Remove" Content="Ta bort" Width="auto" Height="auto" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,5,5"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="2">
+            <TextBox Name="addItemsToListBox" Width="180" Margin="5" Text="{Binding WishListString}"/>
+            <Button  Click="Button_Click_AddItemToList" Content="Lägg till" Grid.Column="1" Grid.Row="2" Width="auto" Height="auto" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,5,5">
+                <Button.IsEnabled>
+                    <MultiBinding Converter="{StaticResource isEnabledConverter}">
+                        <Binding ElementName="addItemsToListBox" Path="Text"/>
+
+                    </MultiBinding>
+                </Button.IsEnabled>
+            </Button>
+            <Button Click="Button_Click_RemoveItemFromList" Content="Ta bort" Width="auto" Height="auto" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,5,5"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -20,5 +20,24 @@ namespace Domain.Services
         {
             return repository.GetAll();
         }
+
+        public void RemoveList(WishList list)
+        {
+            repository.RemoveList(list);
+        }
+        public void RemoveListItem(WishList list, Text text)
+        {
+            repository.RemoveListItem(list, text);
+        }
+
+        public void AddList(WishList list)
+        {
+            repository.AddList(list);
+        }
+
+        public void AddTextItemToList(WishList list, Text text)
+        {
+            repository.AddTextItemToList(list, text);
+        }
     }
 }

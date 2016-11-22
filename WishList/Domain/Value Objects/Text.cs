@@ -12,14 +12,18 @@ namespace Domain.Value_Objects
 
         public Text(string value)
         {
-            if (value.Length < 250)
+            if (value.Length < 40)
             {
                 Value = value;
             }
             else
             {
-                throw new ArgumentException("Text cannot be longer than 250 characters.");
+                throw new ArgumentException("Text cannot be longer than 40 characters.");
             }
+        }
+
+        public Text()
+        {
         }
 
         public override string ToString()

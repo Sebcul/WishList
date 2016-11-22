@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
 using Domain.Value_Objects;
+using System.Windows;
 
 namespace Domain.Repositories
 {
@@ -29,7 +30,7 @@ namespace Domain.Repositories
         {
             lists = new List<WishList>();
             Load();
-            
+
         }
 
         public IEnumerable<WishList> GetAll()
@@ -40,6 +41,23 @@ namespace Domain.Repositories
         public void AddList(WishList list)
         {
             lists.Add(list);
+        }
+
+        public void RemoveList(WishList list)
+        {
+            lists.Remove(list);
+        }
+
+        public void RemoveListItem(WishList list, Text text)
+        {
+            var listToRemoveText = lists.Find(x => x.Id == list.Id);
+            listToRemoveText.ListItems.Remove(text);
+        }
+
+        public void AddTextItemToList(WishList list, Text text)
+        {
+                var listToAddText = lists.Find(x => x.Id == list.Id);
+                listToAddText.ListItems.Add(text);
         }
 
 
