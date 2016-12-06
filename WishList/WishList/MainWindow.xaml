@@ -1,10 +1,11 @@
-﻿<Window x:Class="WishListApp.MainWindow"
+﻿<Controls:MetroWindow x:Class="WishListApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WishListApp"
         mc:Ignorable="d"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
         <local:IsEnabledConverter x:Key="isEnabledConverter"/>
@@ -51,4 +52,4 @@
             <Button Click="Button_Click_RemoveItemFromList" Content="Ta bort" Width="auto" Height="auto" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,5,5"/>
         </StackPanel>
     </Grid>
-</Window>
+</Controls:MetroWindow>

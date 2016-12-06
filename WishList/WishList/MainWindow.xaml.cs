@@ -16,10 +16,11 @@ using System.Windows.Shapes;
 using Domain.Services;
 using Domain.Entities;
 using Domain.Value_Objects;
+using MahApps.Metro.Controls;
 
 namespace WishListApp
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         public Text TextItem { get; set; }
         public string WishListString { get; set; }
