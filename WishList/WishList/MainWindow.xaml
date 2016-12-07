@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WishListApp"
         mc:Ignorable="d"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Wish list" Height="350" Width="525">
     <Window.Resources>
         <local:IsEnabledConverter x:Key="isEnabledConverter"/>
         <local:SelectedToVisibilityConverter x:Key="selectedToVisibilityConverter"/>
