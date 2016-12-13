@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Value_Objects
 {
+    [Serializable]
     public class Text
     {
         public string Value { get; }

@@ -7,6 +7,7 @@ using Domain.Value_Objects;
 
 namespace Domain.Entities
 {
+    [Serializable]
     public class WishList
     {
         public Guid Id { get; }
